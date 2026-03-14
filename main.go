@@ -104,13 +104,9 @@ func handlerSnakePost(logger *slog.Logger, w http.ResponseWriter, r *http.Reques
 			time.Sleep(30 * time.Millisecond)
 		}
 
-		w.Write(sideband(SidebandProgress, []byte("... if 10 people write me that they're interested to [infinite-git at stfnw.de] I'll release the source code\n\n")))
+		w.Write(sideband(SidebandProgress, []byte("... Here's the source code\n\n")))
 		flusher.Flush()
 		time.Sleep(500 * time.Millisecond)
-
-		// w.Write(sideband(SidebandProgress, []byte("... Here's the source code\n\n")))
-		// flusher.Flush()
-		// time.Sleep(500 * time.Millisecond)
 
 		for line := range bytes.SplitAfterSeq(REPODATA_TEXT, []byte{'\n'}) {
 			w.Write(sideband(SidebandProgress, line))

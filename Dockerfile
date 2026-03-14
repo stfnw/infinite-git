@@ -22,7 +22,7 @@
 # rm -fv ./repo*
 # git rev-parse main | tr -d '\n' > ./repomainhash
 # { LC_COLLATE=C tree -aC --gitignore ; find -type f | LC_COLLATE=C sort | grep -v -e '^\./repo.*' -e '\.git' | xargs -I{} batcat --color=always {} ; } > ./repotext
-# git gc ; cp ./.git/objects/pack/pack-*.pack ./repopackfile
+# git repack -a -d ; cp ./.git/objects/pack/pack-*.pack ./repopackfile
 
 # podman build -t infinite-git .
 # podman run -d --rm -p 8080:8080 localhost/infinite-git
